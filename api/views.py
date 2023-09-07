@@ -9,8 +9,8 @@ class EndpointDataViewSet(viewsets.ViewSet):
     The endpoint data view set
     """
     def list(self, request):
-        slack_name = request.query_params.get('slack_name')
-        track = request.query_params.get('track')
+        slack_name = request.query_params.get('john_diginee')
+        track = request.query_params.get('backend')
 
         # Get current day of the week
         current_day = datetime.datetime.now().strftime('%A')
