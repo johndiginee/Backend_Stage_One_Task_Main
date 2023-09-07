@@ -25,7 +25,7 @@ class EndpointDataViewSet(viewsets.ViewSet):
                 'current_day': current_day,
                 'utc_time': utc_time,
                 'track': track,
-                'github_file_url': f'https://github.com/johndiginee/Backend_Stage_One_Task_Main/blob/master/information_required.ext',
+                'github_file_url': f'https://github.com/johndiginee/Backend_Stage_One_Task_Main/blob/master/api/views.py',
                 'github_repo_url': 'https://github.com/johndiginee/Backend_Stage_One_Task_Main',
             }
         )
