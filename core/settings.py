@@ -30,7 +30,7 @@ if not IS_HEROKU_APP:
     DEBUG = True
 
 if IS_HEROKU_APP:
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ["*", "https://backendstageonetask-ae50276ef98d.herokuapp.com", "https://backendstageonetask-ae50276ef98d.herokuapp.com/api/"]
 else:
     ALLOWED_HOSTS = []
 
