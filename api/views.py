@@ -1,34 +1,28 @@
-from rest_framework import viewsets
-from .models import EndpointData
-from .serializers import EndpointDataSerializer
 from django.http import JsonResponse
 import datetime
+import json
 
-class EndpointDataViewSet(viewsets.ViewSet):
-    """
-    The endpoint data view set
-    """
-    def list(self, request):
-        slack_name = request.query_params.get('john_diginee')
-        track = request.query_params.get('backend')
+def list(request):
+    #the get query from url
+    slack_name = request.GET.get("john_diginee")
+    track = request.GET.get("backend")
 
-        # Get current day of the week
-        current_day = datetime.datetime.now().strftime('%A')
+    #to confirm that the query are provided
+    if not slack_name or not track:
+        return JsonResponse({"error":"Both slack name and track must be provided"}, status=400)
+    
+    github_repo = "https://github.com/johndiginee/Backend_Stage_One_Task_Main"
+    github_file = "f'{github.com/johndiginee}/blob/master/api/views.py"
+    cur_day = datetime.datetime.utcnow().strftime('%A')
+    utctime = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
 
-        # Get current UTC time within a +/-2 minute window
-        utc_time = datetime.datetime.utcnow()
 
-        # Create or update the record in the database
-        endpoint_data, created = EndpointData.objects.update_or_create(
-            slack_name=slack_name,
-            defaults={
-                'current_day': current_day,
-                'utc_time': utc_time,
-                'track': track,
-                'github_file_url': f'https://github.com/johndiginee/Backend_Stage_One_Task_Main/blob/master/api/views.py',
-                'github_repo_url': 'https://github.com/johndiginee/Backend_Stage_One_Task_Main',
-            }
-        )
-
-        serializer = EndpointDataSerializer(endpoint_data)
-        return JsonResponse(serializer.data)
+    response_data = { 
+        "slack_name": slack_name,
+        "current_day": cur_day,
+        "utc_time": utctime,
+        "track": track,
+        "github_file_url": github_file,
+        "github_repo_url": github_repo,
+        "status_code": 200
+  }
