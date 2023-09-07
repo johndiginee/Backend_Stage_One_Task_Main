@@ -26,7 +26,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 
 # SECURITY WARNING: Dont run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if IS_HEROKU_APP:
     ALLOWED_HOSTS = ["*", "https://backendstageonetask-ae50276ef98d.herokuapp.com", "https://backendstageonetask-ae50276ef98d.herokuapp.com/api/"]
