@@ -13,5 +13,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/', views.list, name='list'),
+    path('api', views.list, name='list'),
 ]
